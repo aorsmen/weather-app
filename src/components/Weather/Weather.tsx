@@ -24,7 +24,7 @@ const Weather = () => {
   // Get weather data by geolocation
   useEffect(() => {
     if(typeof currentLocation?.latitude !== 'undefined' && typeof currentLocation.longitude !== 'undefined'){
-      sendRequest({url: `https://api.openweathermap.org/data/2.5/weather?lat=${currentLocation?.latitude}&lon=${currentLocation?.longitude}&units={APP-ID}`}, setData);
+      sendRequest({url: `https://api.openweathermap.org/data/2.5/weather?lat=${currentLocation?.latitude}&lon=${currentLocation?.longitude}&units=metric&appid={APP-ID}`}, setData);
     }
   }, [currentLocation?.latitude, currentLocation?.longitude, sendRequest, setData]);
 
