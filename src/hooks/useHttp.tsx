@@ -30,7 +30,11 @@ const useHttp = () => {
 
             const data = await response.json();
 
-            applyData(data);
+            if(data.cod === 200){
+                applyData(data);
+            }else{
+                setError('Incorrect data!');
+            }
         }catch{
             setError('Request failed!');
         }

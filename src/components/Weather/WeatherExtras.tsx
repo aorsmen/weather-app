@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import DataContext from '../../store/DataContext';
 import Image from '../UI/Image';
 // Image imports
 import imgVisibility from '../../assets/images/visibility.svg';
@@ -6,7 +8,7 @@ import imgPressure from '../../assets/images/pressure.svg';
 import imgWind from '../../assets/images/wind.svg';
 
 import styles from './WeatherExtras.module.css';
-import { unitType, WeatherWind } from './WeatherInterfaces';
+import { unitType } from './WeatherInterfaces';
 
 // Getting direction of the wind
 const getDirection = (angle: number) => {
@@ -27,7 +29,9 @@ const calculateWind = (val: number, unit: unitType) => {
     return result;
 };
 
-const WeatherExtras: React.FC<{wind: WeatherWind, humidity: number, pressure: number, visibility: number, unit: unitType}> = ({ wind, humidity, pressure, visibility, unit }) => {
+const WeatherExtras: React.FC<{unit: unitType}> = ({ unit }) => {
+    const { data } = useContext(DataContext);
+    const { wind, visibility, main } = data;
     const windArrowDeg = wind.deg + 135;
 
     return (
@@ -36,7 +40,7 @@ const WeatherExtras: React.FC<{wind: WeatherWind, humidity: number, pressure: nu
                 <div className={styles['weather__extra-icon']}>
                     <Image src={imgHumidity} alt="Humidity" title="Humidity" />
                 </div>
-                <div className={styles['weather__extra-content']}>{` ${humidity}%`}</div>
+                <div className={styles['weather__extra-content']}>{` ${main.humidity}%`}</div>
             </div>
             <div className={`${styles['weather__extra']} ${styles['weather__extra-wind']}`}>
                 <div className={styles['weather__extra-icon']}>
@@ -48,7 +52,7 @@ const WeatherExtras: React.FC<{wind: WeatherWind, humidity: number, pressure: nu
                 <div className={styles['weather__extra-icon']}>
                     <Image src={imgPressure} alt="Pressure" title="Pressure" />
                 </div>
-                <div className={styles['weather__extra-content']}>{`${pressure}hPa`}</div>
+                <div className={styles['weather__extra-content']}>{`${main.pressure}hPa`}</div>
             </div>
             <div className={`${styles['weather__extra']} ${styles['weather__extra-visibility']}`}>
                 <div className={styles['weather__extra-icon']}>

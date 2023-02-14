@@ -1,10 +1,13 @@
+import { useContext } from 'react';
+import DataContext from '../../store/DataContext';
 import styles from './WeatherDate.module.css';
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-const WeatherDate: React.FC<{dt: number}> = ({ dt }) => {
-    const current = new Date(dt * 1000);
+const WeatherDate = () => {
+    const { data } = useContext(DataContext);
+    const current = new Date(data.dt * 1000);
     const month = current.getMonth();
     const date = current.getDate();
     const day = current.getDay();

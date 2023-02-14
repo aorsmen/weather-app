@@ -28,3 +28,9 @@
     color: #000;
     cursor: default;
 }
+.weather__inner{
+    
+}
+.weather__location{
+    margin-top: 20px;
+}

@@ -32,6 +32,7 @@ export interface WeatherData {
     visibility: number;
     wind: WeatherWind;
     dt: number;
+    cod: number;
 };
 
 export type unitType = 'metric' | 'imperial';
