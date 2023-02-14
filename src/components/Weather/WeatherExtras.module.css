@@ -1,0 +1,22 @@
+.weather__extras{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding-top: 10px;
+    max-width: 400px;
+    margin: 20px auto;
+}
+.weather__extra{
+    display: flex;
+    align-items: center;
+}
+.weather__extra-icon{
+    flex: 0 0 50px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.weather__extra-wind figure{
+    flex: 0 0 30px;
+}
